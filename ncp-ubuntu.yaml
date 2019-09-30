@@ -471,8 +471,10 @@ data:
     # single_tier_topology is True and tier0_gateway is defined,
     # top_tier_router value can be empty and a tier1 gateway is automatically
     # created for the cluster
-    top_tier_router = T0-SITEA
+    #top_tier_router = T0-SITEA
     policy_nsxapi = True
+    single_tier_topology = True
+    tier0_gateway = T0-SITEA
 
 
     # Name or UUID of the external ip pools that will be used only for
@@ -484,6 +486,7 @@ data:
     # already existing resource on NSX and every transport node where VMs
     # hosting containers are deployed must be enabled on this transport zone
     overlay_tz = 69007beb-637b-4269-a776-756198e5bf5f
+    #overlay_tz = OVERLAY-TZ
 
     # Name or UUID of the lb service that can be attached by virtual servers
     #lb_service = <None>
@@ -754,7 +757,7 @@ spec:
           # To add default LB cert, uncomment the volumeMount
           # Update ncp.ini with the mounted cert and key file paths
           - name: lb-cert
-            mountPath: /etc/nsx-ujo/lb-cert
+            mountPath: /etc/nsx-certs
             readOnly: true
       volumes:
         - name: config-volume
